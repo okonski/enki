@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN" "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg-flat.dtd">
+%html{"xmlns"=>"http://www.w3.org/1999/xhtml", "xml:lang"=>"en"}
+%head
+  %meta{"http-equiv"=>"Content-Type", :content=>"application/xhtml+xml", :charset=>"utf-8"}
+  %title
+    =yield(:page_title) || h(config[:title])
+  =stylesheet_link_tag 'application'
+  =javascript_include_tag 'jquery'
+  =open_id_delegation_link_tags(h(config[:open_id_delegation, :server]), h(config[:open_id_delegation, :delete])) if config[:open_id_delegation]
+  =yield :head
+%body
+  #page_container
+    %h1#page_heading
+      %a{:href => config[:url]}=config[:title]
+    #main
+      =yield
+    #navigation
+      %h2 Pages
+      %ul
+        -page_links_for_navigation.each do |link|
+          %li=link_to(link.name, link.url)
+      -unless category_links_for_navigation.empty?
+        %h2 Categories
+        %ul
+          -category_links_for_navigation.each do |link|
+            %li=link_to(link.name, link.url)
+        %form{:method => "get", :id=>"sform", :action=>"http://www.google.com/search"}
+          %div
+            %h2
+              %label{:for=>"q"} Search
+            %input{:type=>"text", :id=>"q", :value=>"", :name=>"q"}
+            %input{:type=>"hidden", :name=>"sitesearch", :value=>config[:url]}
+    #footer
+      =config[:title]
+      &#169;
+      =config[:author, :name]
+      =". Valid"
+      %a{:href => "http://validator.w3.org/check?uri=referer"} XHTML
+      and
+      =link_to "ATOM", "http://feedvalidator.org/check.cgi?url=#{config[:url]}/posts.atom"
+      =". Powered by"
+      %a{:href=>"http://www.enkiblog.com", :title=>"A Ruby on Rails blogging app for the fashionable developer"} Enki
+      ="."

@@ -1,0 +1,16 @@
+%h2
+  =link_to(h(post.title), post_path(post))
+  
+.entrybody
+  =post.body_html.untaint
+.meta
+  %ul
+    %li.date
+      Posted on
+      =format_post_date(post.published_at)
+    %li.comments
+      =link_to(pluralize(post.approved_comments.size,"comment"), post_path(post,:anchor => 'comments'))
+    -unless post.tags.empty?
+      %li.tags
+        Tagged
+        =linked_tag_list(post.tags)

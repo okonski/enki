@@ -1,0 +1,16 @@
+-content_for(:head) do
+  =javascript_include_tag('admin/actions.js')
+%h1 Recent actions
+%table{:cellspacing => "0", :cellpadding => "0"}
+  %thead
+    %th Date
+    %th Action
+    %th
+  %tbody
+    -@undo_items.each do |undo_item|
+      %tr{:class => cycle('', 'alt')}
+        %td=h undo_item.created_at.strftime('%d %b, %Y')
+        %td=h undo_item.description
+        %td
+          -form_for(:undo_item, undo_item, :url => undo_admin_undo_item_path(undo_item), :html => {:class => 'undo-item', :method => :post}) do |form|
+            =image_submit_tag("silk/arrow_undo.png", :alt => 'Undo')
