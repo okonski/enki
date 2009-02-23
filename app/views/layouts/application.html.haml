@@ -5,7 +5,7 @@
   %meta{"http-equiv"=>"Content-Type", :content=>"application/xhtml+xml", :charset=>"utf-8"}
   %title
     =yield(:page_title) || h(config[:title])
-  =stylesheet_link_tag 'application'
+  =stylesheet_link_tag 'screen'
   =javascript_include_tag 'jquery'
   =open_id_delegation_link_tags(h(config[:open_id_delegation, :server]), h(config[:open_id_delegation, :delete])) if config[:open_id_delegation]
   =yield :head
