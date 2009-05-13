@@ -2,7 +2,8 @@
   =link_to(h(post.title), post_path(post))
   
 .entrybody
-  =post.body_html.untaint
+  :plain
+    #{post.body_html.untaint}
 .meta
   %ul
     %li.date
