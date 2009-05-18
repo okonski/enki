@@ -19,8 +19,8 @@
   =yield :head
     
   -if flash[:notice]
-    %script
-      jQuery(document).ready(function() {humanMsg.displayMsg('=escape_javascript(h(flash[:notice]))');})
+    :javascript
+      jQuery(document).ready(function() {humanMsg.displayMsg('#{escape_javascript(h(flash[:notice]))}');})
 %body
   #page
     #content
