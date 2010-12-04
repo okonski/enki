@@ -5,7 +5,6 @@ class InitializeDb < ActiveRecord::Migration
       t.string   "author",                  :null => false
       t.string   "author_url",              :null => false
       t.string   "author_email",            :null => false
-      t.string   "author_openid_authority", :null => false
       t.text     "body",                    :null => false
       t.text     "body_html",               :null => false
       t.datetime "created_at"
@@ -34,7 +33,6 @@ class InitializeDb < ActiveRecord::Migration
       t.string   "title",      :null => false
       t.string   "slug",       :null => false
       t.text     "body",       :null => false
-      t.text     "body_html",  :null => false
       t.datetime "created_at"
       t.datetime "updated_at"
     end
@@ -46,7 +44,6 @@ class InitializeDb < ActiveRecord::Migration
       t.string   "title",                                                      :null => false
       t.string   "slug",                                                       :null => false
       t.text     "body",                                                       :null => false
-      t.text     "body_html",                                                  :null => false
       t.boolean  "active",                  :default => true,                  :null => false
       t.integer  "approved_comments_count", :default => 0,                     :null => false
       t.string   "cached_tag_list"

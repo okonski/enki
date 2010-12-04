@@ -8,7 +8,6 @@ class Post < ActiveRecord::Base
 
   before_validation       :generate_slug
   before_validation       :set_dates
-  #before_save             :apply_filter
 
   validates_presence_of   :title, :slug, :body
 
@@ -97,12 +96,7 @@ class Post < ActiveRecord::Base
   def month
     published_at.beginning_of_month
   end
-
-  # Deprecated
-  def apply_filter
-    self.body_html = ::GitHub::Markup.render(".md", self.body)
-  end
-
+  
   def set_dates
     self.edited_at = Time.now if self.edited_at.nil? || !minor_edit?
     self.published_at = Chronic.parse(self.published_at_natural)

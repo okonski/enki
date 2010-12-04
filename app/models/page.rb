@@ -3,19 +3,12 @@ class Page < ActiveRecord::Base
 
   before_validation     :generate_slug
 
-  #before_save           :apply_filter
-
   class << self
     def build_for_preview(params)
       page = Page.new(params)
       #page.apply_filter
       page
     end
-  end
-
-  # Deprecated
-  def apply_filter
-    self.body_html = ::GitHub::Markup.render(".md", self.body)
   end
 
   def active?
