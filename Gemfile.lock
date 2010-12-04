@@ -1,7 +1,6 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    RedCloth (4.2.3)
     aaronh-chronic (0.3.9)
     abstract (1.0.0)
     actionmailer (3.0.3)
@@ -52,6 +51,7 @@ GEM
     gherkin (2.2.9)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
+    github-markup (0.5.0)
     hpricot (0.8.3)
     i18n (0.4.2)
     json (1.4.6)
@@ -113,12 +113,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  RedCloth
   aaronh-chronic
   coderay
   cucumber-rails
   factory_girl
   formtastic
+  github-markup
   hpricot
   lesstile
   rack-openid

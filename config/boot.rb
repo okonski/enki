@@ -1,5 +1,10 @@
 require 'rubygems'
 
+require 'github/markup'
+GitHub::Markup.markup(:markdown, /md|mkdn?|mdown|markdown/) do |content|
+  Markdown.new(content).to_html
+end
+
 # Set up gems listed in the Gemfile.
 gemfile = File.expand_path('../../Gemfile', __FILE__)
 begin
