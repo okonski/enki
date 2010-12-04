@@ -5,5 +5,6 @@
 <%= form.inputs do -%>
   <%= form.input :title %>
   <%= form.input :slug, :hint => "Leave blank for an auto-generated slug based on the title." %>
+  <%= form.input :project, :hint => 'If you want to reference to your GitHub project in this post, give name of that project' %>
   <%= form.input :body, :hint => "<a href='http://textile.thresholdstate.com/'>Textile enabled</a>. Use Ctrl+E to switch between preview and edit mode.".html_safe %>
 <% end -%>
