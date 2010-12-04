@@ -1,1 +1,5 @@
-<%=raw page.body_html %>
+<div id="entrysource">
+  <%= page.body %>
+</div>
+<div id="entryresult" />
+<%= javascript_include_tag 'parse_showdown' %>

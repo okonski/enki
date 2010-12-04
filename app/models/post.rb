@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
 
   before_validation       :generate_slug
   before_validation       :set_dates
-  before_save             :apply_filter
+  #before_save             :apply_filter
 
   validates_presence_of   :title, :slug, :body
 
@@ -41,7 +41,7 @@ class Post < ActiveRecord::Base
       post = Post.new(params)
       post.generate_slug
       post.set_dates
-      post.apply_filter
+      #post.apply_filter
       TagList.from(params[:tag_list]).each do |tag|
         post.tags << Tag.new(:name => tag)
       end
@@ -98,6 +98,7 @@ class Post < ActiveRecord::Base
     published_at.beginning_of_month
   end
 
+  # Deprecated
   def apply_filter
     self.body_html = ::GitHub::Markup.render(".md", self.body)
   end

@@ -466,4 +466,4 @@ ol.CodeRay li { white-space: pre }
 .ty { color:#339; font-weight:bold }
 .v  { color:#036 }
 .xt { color:#444 }
-
+#entrysource { display: none; }

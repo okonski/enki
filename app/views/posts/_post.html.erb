@@ -1,6 +1,10 @@
 <h2><%= link_to(post.title, post_path(post)) %></h2>
 <div class="entrybody">
-  <%=raw post.body_html %>
+  <div id="entrysource">
+    <%= post.body %>
+  </div>
+  <div id="entryresult" />
+  <%= javascript_include_tag 'parse_showdown' %>
 </div>
 <div class="meta">
   <ul>
