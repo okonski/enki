@@ -33,6 +33,7 @@ class InitializeDb < ActiveRecord::Migration
       t.string   "title",      :null => false
       t.string   "slug",       :null => false
       t.text     "body",       :null => false
+      t.string   "project"
       t.datetime "created_at"
       t.datetime "updated_at"
     end
@@ -47,6 +48,7 @@ class InitializeDb < ActiveRecord::Migration
       t.boolean  "active",                  :default => true,                  :null => false
       t.integer  "approved_comments_count", :default => 0,                     :null => false
       t.string   "cached_tag_list"
+      t.string   "project"
       t.datetime "published_at"
       t.datetime "created_at"
       t.datetime "updated_at"
