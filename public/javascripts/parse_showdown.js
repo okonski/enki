@@ -1,4 +1,6 @@
-var converter = new Showdown.converter();
-var txt = $("#entrysource").html();
-var html = converter.makeHtml(txt);
-$("#entryresult").html(html);
+$(document).ready(function(){
+  var converter = new Showdown.converter();
+  $(".gfm").each(function(content){
+    $(this).html(converter.makeHtml($(this).html()));
+  });
+});

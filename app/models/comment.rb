@@ -5,8 +5,7 @@ class Comment < ActiveRecord::Base
   attr_accessor         :openid_valid
 
   belongs_to            :post
-
-  before_save           :apply_filter
+  
   after_save            :denormalize
   after_destroy         :denormalize
 
@@ -15,10 +14,6 @@ class Comment < ActiveRecord::Base
 
   def open_id_error_should_be_blank
     errors.add(:base, openid_error) unless openid_error.blank?
-  end
-
-  def apply_filter
-    self.body_html = Lesstile.format_as_xhtml(self.body, :code_formatter => Lesstile::CodeRayFormatter)
   end
 
   def blank_openid_fields

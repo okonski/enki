@@ -1,14 +1,10 @@
 <h2><%= link_to(post.title, post_path(post)) %></h2>
-<div class="entrybody">
-  <div id="entrysource">
-    <%= post.body %>
-  </div>
-  <div id="entryresult" />
+<div class="entrybody gfm">
+  <%= post.body %>
   <script type="text/javascript">
     var GitHub = {}
     GitHub.nameWithOwner = "<%= enki_config[:author][:github] %>/<%= post.project %>";
   </script>
-  <%= javascript_include_tag 'parse_showdown' %>
 </div>
 <div class="meta">
   <ul>

@@ -1,9 +1,7 @@
-<div id="entrysource">
+<div class="gfm">
   <%= page.body %>
 </div>
-<div id="entryresult" />
 <script type="text/javascript">
   var GitHub = {}
   GitHub.nameWithOwner = "<%= enki_config[:author][:github] %>/<%= page.project %>";
 </script>
-<%= javascript_include_tag 'parse_showdown' %>

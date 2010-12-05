@@ -6,7 +6,6 @@ class InitializeDb < ActiveRecord::Migration
       t.string   "author_url",              :null => false
       t.string   "author_email",            :null => false
       t.text     "body",                    :null => false
-      t.text     "body_html",               :null => false
       t.datetime "created_at"
       t.datetime "updated_at"
     end
