@@ -51,6 +51,7 @@ GEM
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
     github-markup (0.5.0)
+    haml (3.0.24)
     hpricot (0.8.3)
     i18n (0.4.2)
     json (1.4.6)
@@ -116,6 +117,7 @@ DEPENDENCIES
   factory_girl
   formtastic
   github-markup
+  haml
   hpricot
   rack-openid
   rails (= 3.0.3)

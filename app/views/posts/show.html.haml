@@ -1,0 +1,38 @@
+-content_for :head do
+  =javascript_include_tag 'common'
+  =javascript_include_tag 'live-comment-preview'
+-content_for :page_title do
+  =post_title(@post)
+
+=render :partial => 'posts/post', :locals => {:post => @post}
+%ol.commentlist
+  -@post.approved_comments.each do |c|
+    %li{:class => cycle('alt',''), :id=>"comment-#{c.id}"}
+      =render :partial => 'comments/comment', :locals => {:comment => c}
+.related
+  Looking for more? Head on over to the
+  =link_to("archives", archives_path)
+%h2 Post a comment
+-unless @comment.errors.empty?
+  .errors
+    %h3 Comment not added!
+    %ul
+      -@comment.errors.sort_by(&:first).each do |error|
+        %li=format_comment_error(error)
+-form_for([@post, @comment]) do |f|
+  %div
+    %p
+      =f.text_field :author
+      =f.label :comment_author
+      %small
+        Name or
+        %a{:href => "http://openidexplained.com"} OpenID
+        (required)
+    %p=f.text_area :body
+    %br/
+    %small
+      ="("
+      %a{:href => "http://lesstile.rubyforge.org"} lesstile enabled
+      ="- surround code blocks with ---)"
+    %p=submit_tag "Add Comment"
+      

@@ -1,0 +1,9 @@
+-content_for :head do
+  =javascript_include_tag 'admin/edit-preview'
+
+-form.input_field_set do
+  =form.input :title
+  =form.input :slug, :hint => "Leave blank for an auto-generated slug based on the title."
+  =form.input :project, :hint => 'If you want to reference to your GitHub project in this post, give name of that project'
+  =form.input :body, :hint => "<a href='http://daringfireball.net/projects/markdown/syntax'>Markdown enabled</a>. Thanks to <a href='http://github.github.com/github-flavored-markdown/'>GitHub and Showdown</a>.".html_safe
+

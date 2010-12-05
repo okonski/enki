@@ -1,0 +1,44 @@
+-content_for(:head) do
+  =javascript_include_tag 'jquery.jfeed.js'
+  =javascript_include_tag 'common'
+  =javascript_include_tag 'admin/dashboard'
+
+#summary
+  %h1
+    =link_to(h(enki_config[:title]), '/')
+  %p.stats
+    =pluralize(@stats.post_count, 'post')
+    ,
+    =pluralize(@stats.comment_count, 'comment')
+    ,
+    =pluralize(@stats.tag_count, 'tag')
+#recent-posts.panel
+  %h2 Latest Posts
+  %ul
+    -@posts.each_with_index do |post, i|
+      %li{:class => "#{i == 0 ? 'first ' : ''}item" }
+        =link_to(post.title, [:admin, post])
+        %span.date=h post.published_at.strftime("%b %e")
+        %span.count=link_to(post.approved_comments.size, post)
+
+#recent-comments.panel
+  %h2 Latest Comments
+  %ul
+    -@comment_activity.each_with_index do |activity, i|
+      %li{ :class => "#{i == 0 ? 'first ' : ''}item" }
+        =link_to(activity.post.title, activity.post)
+        %span.date= activity.most_recent_comment.created_at.strftime("%b %e")
+        %span.count= activity.post.approved_comments.size
+        %ul
+          -activity.comments.each_with_index do |comment, index|
+            -content_tag :li, :class => activity.comments.size == index + 1 ? 'last' : nil do
+              =link_to(comment.author, [:admin, comment], {:id => "comment-link-#{comment.id}", :class => 'comment-link'})
+
+        -activity.comments.each do |comment|
+          .comment-body{:id => "comment-body-#{comment.id}"}
+            .comment-actions
+              =link_to(image_tag('silk/pencil.png', :alt => 'edit'), admin_comment_path(comment))
+              -form_for(:comment, comment, :url => [:admin, comment], :html => {:class => 'delete-item', :id => "delete-comment-#{comment.id}", :method => :delete}) do |form|
+                =image_submit_tag("silk/delete.png")
+            =comment.body
+

@@ -17,6 +17,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'ruby-debug'
 
 # Bundle the extra gems:
+gem 'haml'
 gem 'github-markup'
 gem 'ruby-openid', :require => 'openid'
 gem 'rack-openid', :require => 'rack/openid'
