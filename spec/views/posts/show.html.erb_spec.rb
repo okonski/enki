@@ -15,19 +15,20 @@ describe "/posts/show.html.erb" do
       :author                  => "Don Alias",
       :author_url              => "http://enkiblog.com",
       :author_openid_authority => "http://enkiblog.com/server",
-      :body_html               => "A comment"
+      :body                    => "A comment"
     )
 
     mock_comment2 = mock_model(Comment,
       :created_at              => 1.month.ago,
       :author                  => "Don Alias",
       :author_url              => '',
-      :body_html               => "A comment"
+      :body                    => "A comment"
     )
 
     @post = mock_model(Post,
       :title             => "A post",
-      :body_html         => "Posts contents!",
+      :body              => "Posts contents!",
+      :project           => 'enki',
       :published_at      => 1.year.ago,
       :slug              => 'a-post',
       :approved_comments => [mock_comment, mock_comment2],

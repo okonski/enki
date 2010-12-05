@@ -8,8 +8,9 @@ describe "/pages/show.html.erb" do
 
     @page = mock_model(Page,
       :title             => "A page",
-      :body_html         => "Page content!",
-      :slug              => 'a-page'
+      :body              => "Page content!",
+      :slug              => 'a-page',
+      :project           => 'enki'
     )
     assign :page, @page
   end
